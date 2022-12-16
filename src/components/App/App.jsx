@@ -12,7 +12,7 @@ import { Title } from './App.styled';
 
 export const App = () => { 
   const [contacts, setContacts] = useState([]); 
-  //const [filter, setFilter] = useState(""); 
+  const [filter, setFilter] = useState(""); 
 
   const addContact = (name, number) => {
     
@@ -31,7 +31,25 @@ export const App = () => {
       window.alert(`${name} is already in contacts `);
     }
   };
+  // const deleteContact = contactId => {
+  //   setFilter(state => ({
+  //     state.filter(contact => contact.id !== contactId),
+  //   }));
+  // };
 
+ const changeFilter = e => {
+  setFilter(e.currentTarget.value );
+  };
+
+  const getVisibleContacts = () => {
+    const normalizedFilter = filter.toLowerCase();
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  }; 
+
+  const visibleContacts = getVisibleContacts();
       return (
       <div 
 style={{
@@ -51,7 +69,15 @@ style={{
        // handleChange={handleChange}
       />
     </ContainerWrap>
-      
+      <ContainerWrap title="Contacts">
+      <Filter value={filter} onChange={changeFilter} />
+      {contacts.length > 0 && (
+        <ContactsList
+          contacts={visibleContacts}
+         // onDeleteContact={this.deleteContact}
+        />
+      )}
+    </ContainerWrap>
 
       </div> 
       
