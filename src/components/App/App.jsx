@@ -9,10 +9,13 @@ import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactsList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Fiter/Filter';
 import { Title } from './App.styled';
+import { useLocalStorage } from 'hooks/useLokalStorage';
 
-export const App = () => { 
-  const [contacts, setContacts] = useState([]); 
+export const App = () => {
+   const [contacts, setContacts] = useLocalStorage("contacts", []);
+  // const [contacts, setContacts] = useState([]); 
   const [filter, setFilter] = useState(""); 
+
 
   const addContact = (name, number) => {
     
