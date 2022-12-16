@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // import { useLocalStorage } from 'hooks/useLokalStorage';
 
 
-export const ContactForm =()=> {
+export const ContactForm =({onSubm})=> {
   //  const [contacts, setContacts] = useState([]); 
  const [name, setName] = useState(""); 
  const [number, setNumber] = useState(""); 
@@ -29,9 +29,8 @@ export const ContactForm =()=> {
  }
  const  handleSubmit = evt => {
     evt.preventDefault();
-
-
-// onSubm(name, number);!!!
+console.log(name, number)
+onSubm(name, number);
  reset();
 }
 

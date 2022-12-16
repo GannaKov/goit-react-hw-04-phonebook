@@ -1,7 +1,7 @@
 //import PropTypes from 'prop-types';
 
 import { nanoid } from 'nanoid';
-import React, {Component} from 'react';
+import { useState,Component } from 'react'; 
 //import React, { useState } from 'react';
 import { GlobalStyle } from 'CreateGlobalStyle';
 import { ContainerWrap } from 'components/Section/Section';
@@ -9,14 +9,64 @@ import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactsList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Fiter/Filter';
 import { Title } from './App.styled';
-export class App extends Component {
+
+export const App = () => { 
+  const [contacts, setContacts] = useState([]); 
+  //const [filter, setFilter] = useState(""); 
+
+  const addContact = (name, number) => {
+    
+    const checkName = contacts
+      .map(contact => contact.name.toLowerCase())
+      .some(contact => contact === name.toLowerCase());
+    if (!checkName) {
+      const newContact = {
+        id: nanoid(),
+        name,
+        number,
+      };
+     
+        setContacts ([newContact, ...contacts]);
+    } else {
+      window.alert(`${name} is already in contacts `);
+    }
+  };
+
+      return (
+      <div 
+style={{
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        color: '#010101',
+      }}> 
+
+       <GlobalStyle />
+        <Title>Phonebook</Title>
+
+        <ContainerWrap>
+        <ContactForm
+        onSubm={addContact}
+       // handleChange={handleChange}
+      />
+    </ContainerWrap>
+      
+
+      </div> 
+      
+     
+    );
+  } 
+
+export class oldApp extends Component {
   state = {
     contacts: [],
     filter: '',
   };
  
 
-  
+ 
 
   addContact = (name, number) => {
     const { contacts } = this.state;
