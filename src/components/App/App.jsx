@@ -31,12 +31,13 @@ export const App = () => {
       window.alert(`${name} is already in contacts `);
     }
   };
-  // const deleteContact = contactId => {
-  //   setFilter(state => ({
-  //     state.filter(contact => contact.id !== contactId),
-  //   }));
-  // };
-
+  const deleteContact = contactId => {
+    //setContacts(state => state.filter(contact => contact.id !== contactId),
+   // );
+    setContacts(contacts.filter(contact => contact.id !== contactId),
+   );
+  };
+  
  const changeFilter = e => {
   setFilter(e.currentTarget.value );
   };
@@ -74,7 +75,7 @@ style={{
       {contacts.length > 0 && (
         <ContactsList
           contacts={visibleContacts}
-         // onDeleteContact={this.deleteContact}
+         onDeleteContact={deleteContact}
         />
       )}
     </ContainerWrap>
@@ -84,7 +85,7 @@ style={{
      
     );
   } 
-
+//-------------------
 export class oldApp extends Component {
   state = {
     contacts: [],
