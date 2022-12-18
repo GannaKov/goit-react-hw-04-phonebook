@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import  {Form,FormInput,ModalSubmitBtn,FormLabel} from "components/ContactForm/ContactForm.styled"
 import PropTypes from 'prop-types';
-// import { useLocalStorage } from 'hooks/useLokalStorage';
+
 
 
 export const ContactForm =({onSubm})=> {
-  //  const [contacts, setContacts] = useState([]); 
+
  const [name, setName] = useState(""); 
  const [number, setNumber] = useState(""); 
-//  const [name, setName] = useLocalStorage('name', '');
-//  const [number, setNumber] = useLocalStorage('number', '');
+
  const handleChange = evt => {
   
     const { name, value } = evt.target;

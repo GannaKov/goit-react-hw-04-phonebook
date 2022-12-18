@@ -1,5 +1,3 @@
-//import PropTypes from 'prop-types';
-
 import { nanoid } from 'nanoid';
 import { useState,Component } from 'react'; 
 //import React, { useState } from 'react';
@@ -29,17 +27,15 @@ export const App = () => {
         number,
       };
      
-        setContacts ([newContact, ...contacts]);
+        setContacts (state=>[newContact, ...state]);
     } else {
       window.alert(`${name} is already in contacts `);
     }
   };
   const deleteContact = contactId => {
-    //setContacts(state => state.filter(contact => contact.id !== contactId),
-   // );
-    setContacts(contacts.filter(contact => contact.id !== contactId),
-   );
-  };
+   
+   setContacts(state => state.filter(contact => contact.id !== contactId))}
+  
   
  const changeFilter = e => {
   setFilter(e.currentTarget.value );
