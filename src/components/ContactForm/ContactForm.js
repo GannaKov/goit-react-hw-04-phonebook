@@ -28,7 +28,7 @@ export const ContactForm =({onSubm})=> {
  }
  const  handleSubmit = evt => {
     evt.preventDefault();
-console.log(name, number)
+
 onSubm(name, number);
  reset();
 }
